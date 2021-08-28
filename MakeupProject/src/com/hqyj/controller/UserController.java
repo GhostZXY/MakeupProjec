@@ -12,10 +12,23 @@ import com.hqyj.bean.Users;
 import com.hqyj.service.UserService;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
-	@Resource(name = "UserService")
+	@Resource(name="UserService")
 	UserService userService;
+	
+	@RequestMapping("/home")
+	public String home(Model model){
+		List<Users> userList=userService.findAllUser();
+		model.addAttribute("userList",userList);
+		return "home";
+	}
+	
+	@RequestMapping("/info")
+	public String info(Model model,int id){
+		model.addAttribute("userinfo",userService.queryById(id));
+		return "userinfo";
+	}
 
 	public UserService getUserService() {
 		return userService;
@@ -24,10 +37,5 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	@RequestMapping("/home")
-	public String home(Model model){
-		List<Users> userList = userService.findAllUser();
-		model.addAttribute("userList",userList);
-		return "home";
-	}
+	
 }

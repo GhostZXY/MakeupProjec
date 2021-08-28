@@ -28,5 +28,11 @@ public class ProductServiceImpl implements ProductService {
 		this.productDao = productDao;
 	}
 
+	@Override
+	public Products queryById(int id) {
+		// TODO Auto-generated method stub
+		return productDao.queryProductsById(id);
+	}
+
 	
 }

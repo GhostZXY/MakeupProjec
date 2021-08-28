@@ -4,4 +4,7 @@
 	<select id="queryAllProduct" resultType="products">
 		select * from products
 	</select>
+	<select id="queryProductsById" resultType="products" parameterType="Integer">
+		select * from products where p_id=${id}
+	</select>
 </mapper>

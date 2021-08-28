@@ -6,4 +6,5 @@ import com.hqyj.bean.Products;
 
 public interface ProductService {
 	public List<Products> queryAllProduct();
+	public Products queryById(int id );
 }
