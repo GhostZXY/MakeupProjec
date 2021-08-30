@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sp.dao.UserDao"> 
-	<select id="quertAllUser" resultType="user">
-	select * from user
+<mapper namespace="com.jly.dao.UserDao">
+
+	<select id="querryAllUser" resultType="user">
+		select * from user
 	</select>
-	<select id="queryUserById" resultType="user" parameterType="Integer">
-	select * from user where u_id=${id}
+	
+	<select id="querryUserById" parameterType="Integer">
+		select * from user where u_id = ${id}
 	</select>
 	
 	<select id="queryUserByUsername" parameterType="String" resultType="user">
 		select * from user where u_username = ${u_username}
 	</select>
+	
 	<insert id="addUser" parameterType="user">
 		insert into user(u_username,u_password,u_type,u_hasstore) 
 		values (#{u_username},#{u_password},'1','0')
 	</insert>
+	
 	<update id="updateUser">
-		update user u_nickname = #{u_niclname},u_password = #{u_password} where u_username = #{u_username}
+		update user set u_nickname = #{u_nickname},u_password=#{u_password} where u_username=#{u_username}
 	</update>
 	<update id="updateUserWithPic">
-		update user u_head_old = #{u_head_old} where u_username = #{u_username}
+		update user set u_head_old = #{u_head_old} where u_username=#{u_username}
 	</update>
+	
 </mapper>

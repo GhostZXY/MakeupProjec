@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
-	<link rel="stylesheet" type="texts" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
   </head>
@@ -29,4 +29,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<input type="submit" value="注册">
   	</form>
   </body>
-<ml>
+</html>

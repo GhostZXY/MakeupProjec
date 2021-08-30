@@ -1,24 +1,22 @@
-
 package com.hqyj.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.hqyj.bean.Users;
-
+import com.hqyj.bean.User;
 
 public interface UserDao {
-	public List<Users> quertAllUser();
-
-	public Users queryUserById(@Param("id") int id);
 	
-	public int addUser(Users user);
+	public List<User> querryAllUser();
 	
-	public Users queryUserByUsername(@Param("u_username") String username);
+	public User querryUserById(@Param("id") int id);
 	
-	public int updateUser(Users user);
+	public int addUser(User user);
 	
-	public int updateUserWithPic(Users user);
-
+	public User queryUserByUsername(@Param("u_username") String u_username);
+	
+	public int updateUser(User user);
+	
+	public int updateUserWithPic(User user);
 }

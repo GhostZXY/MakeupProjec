@@ -2,9 +2,11 @@ package com.hqyj.service;
 
 import java.util.List;
 
-import com.hqyj.bean.Products;
+import com.hqyj.bean.Product;
+
 
 public interface ProductService {
-	public List<Products> queryAllProduct();
-	public Products queryById(int id );
+	public List<Product> findAllProduct();
+	public Product findProductById(int p_id);
+	
 }

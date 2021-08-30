@@ -1,24 +1,25 @@
 package com.hqyj.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.hqyj.bean.Users;
+import com.hqyj.bean.User;
 import com.hqyj.dao.UserDao;
 
 @Service(value="UserService")
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 	@Resource
 	UserDao userDao;
 
-	@Override
-	public List<Users> findAllUser() {
-		// TODO Auto-generated method stub
-		return userDao.quertAllUser();
-	}
 	public UserDao getUserDao() {
 		return userDao;
 	}
@@ -26,14 +27,19 @@ public class UserServiceImp implements UserService{
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	@Override
+	public List<User> findAllUser(){
+		return userDao.querryAllUser();
+	}
 
 	@Override
-	public Users queryById(int id) {
+	public User findUserById(int p_id) {
 		// TODO Auto-generated method stub
-		return userDao.queryUserById(id);
+		return userDao.querryUserById(p_id);
 	}
+
 	@Override
-	public boolean addUser(Users user) {
+	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
 		if(userDao.queryUserByUsername(user.getU_username())==null){
 			return userDao.addUser(user)!=0;
@@ -42,13 +48,61 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public boolean login(Users user) {
+	public boolean login(User user) {
 		// TODO Auto-generated method stub
-		Users u = userDao.queryUserByUsername(user.getU_username());
+		User u = userDao.queryUserByUsername(user.getU_username());
 		if(u!=null && u.getU_password().equals(user.getU_password())){
 				return true;
 		}
 		return false;
 	}
-	
+
+	@Override
+	public Object findUserByUsername(String loginName) {
+		// TODO Auto-generated method stub
+		return userDao.queryUserByUsername(loginName);
+	}
+
+	@Override
+	public boolean modifyUserInfo(User user) {
+		// TODO Auto-generated method stub
+		
+		return userDao.updateUser(user) != 0;
+	}
+
+	@Override
+	public boolean modifyUserInfoWithHead(User user, MultipartFile head) {
+		// TODO Auto-generated method stub
+		if(modifyUserInfo(user)){
+			//头像上传至服务器
+			//头像的路径制作成虚拟路径，在存储至数据库
+			
+			Date date = new Date();//获取当前时间
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String sux=head.getOriginalFilename().substring(head.getOriginalFilename().lastIndexOf("."));
+			String new_name = sdf.format(date)+UUID.randomUUID()+sux;
+			
+			System.out.println(new_name);
+			
+			File file = new File("D:\\pic\\head\\"+new_name);
+			
+			try {
+				
+				head.transferTo(file);
+				user.setU_head_old("/pic/head/"+new_name);
+				
+				return userDao.updateUserWithPic(user) != 0;
+				
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//userDao.updateUserWithPic(user);
+		}
+		return false;
+	}
 }

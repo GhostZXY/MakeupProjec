@@ -1,12 +1,12 @@
 package com.hqyj.bean;
 
-public class Addresses {
-	private int a_id; 
-	private String a_address;
-	private String a_tel;
-	private String a_name;
-	private int a_u_id;
-	private int a_isdefult;
+public class Address {
+	private int a_id;		  //地址id
+	private String a_address; //联系电话
+	private String a_tel;	  //电话
+	private String a_name;	  //地址名称
+	private User u;			  //用户id
+	private String a_isdefult;//详细地址
 	public int getA_id() {
 		return a_id;
 	}
@@ -31,17 +31,19 @@ public class Addresses {
 	public void setA_name(String a_name) {
 		this.a_name = a_name;
 	}
-	public int getA_u_id() {
-		return a_u_id;
+	public User getU() {
+		return u;
 	}
-	public void setA_u_id(int a_u_id) {
-		this.a_u_id = a_u_id;
+	public void setU(User u) {
+		this.u = u;
 	}
-	public int getA_isdefult() {
+	public String getA_isdefult() {
 		return a_isdefult;
 	}
-	public void setA_isdefult(int a_isdefult) {
+	public void setA_isdefult(String a_isdefult) {
 		this.a_isdefult = a_isdefult;
 	}
+	
+	
 	
 }

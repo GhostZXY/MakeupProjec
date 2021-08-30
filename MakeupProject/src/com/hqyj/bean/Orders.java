@@ -1,38 +1,47 @@
 package com.hqyj.bean;
 
+import java.sql.Date;
+
 public class Orders {
-	private int o_id; 
-	private int o_s_id;
-	private int o_p_id;
-	private int o_a_id;
-	private int o_num; 
-	private int o_status;
-	private String o_ordertime;
-	private String o_log_name;
-	private String o_log_no;
+	private int o_id; //订单id
+	private User user; //用户id
+	private Stores stores ;//商店id
+	private Product product;//商品id
+	private Address address ; //地址id
+	private int o_num ; //数量
+	private int o_status ; //状态
+	private Date o_ordertime;//时间
+	private String o_log_name;//订单名
+	private String o_log_no;//订单号
 	public int getO_id() {
 		return o_id;
 	}
 	public void setO_id(int o_id) {
 		this.o_id = o_id;
 	}
-	public int getO_s_id() {
-		return o_s_id;
+	public User getUser() {
+		return user;
 	}
-	public void setO_s_id(int o_s_id) {
-		this.o_s_id = o_s_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public int getO_p_id() {
-		return o_p_id;
+	public Stores getStores() {
+		return stores;
 	}
-	public void setO_p_id(int o_p_id) {
-		this.o_p_id = o_p_id;
+	public void setStores(Stores stores) {
+		this.stores = stores;
 	}
-	public int getO_a_id() {
-		return o_a_id;
+	public Product getProduct() {
+		return product;
 	}
-	public void setO_a_id(int o_a_id) {
-		this.o_a_id = o_a_id;
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	public int getO_num() {
 		return o_num;
@@ -46,10 +55,10 @@ public class Orders {
 	public void setO_status(int o_status) {
 		this.o_status = o_status;
 	}
-	public String getO_ordertime() {
+	public Date getO_ordertime() {
 		return o_ordertime;
 	}
-	public void setO_ordertime(String o_ordertime) {
+	public void setO_ordertime(Date o_ordertime) {
 		this.o_ordertime = o_ordertime;
 	}
 	public String getO_log_name() {
