@@ -15,4 +15,10 @@
 		insert into user(u_username,u_password,u_type,u_hasstore) 
 		values (#{u_username},#{u_password},'1','0')
 	</insert>
+	<update id="updateUser">
+		update user u_nickname = #{u_niclname},u_password = #{u_password} where u_username = #{u_username}
+	</update>
+	<update id="updateUserWithPic">
+		update user u_head_old = #{u_head_old} where u_username = #{u_username}
+	</update>
 </mapper>

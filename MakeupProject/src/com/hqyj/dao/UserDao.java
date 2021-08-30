@@ -16,5 +16,9 @@ public interface UserDao {
 	public int addUser(Users user);
 	
 	public Users queryUserByUsername(@Param("u_username") String username);
+	
+	public int updateUser(Users user);
+	
+	public int updateUserWithPic(Users user);
 
 }

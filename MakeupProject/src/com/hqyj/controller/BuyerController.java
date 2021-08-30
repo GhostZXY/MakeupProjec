@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hqyj.bean.Products;
 import com.hqyj.bean.Users;
@@ -63,6 +65,14 @@ public class BuyerController {
 			return "success";
 		}
 		return "failed";
+	}
+	
+	@RequestMapping("/modify")
+	public String modify(String u_username,String u_password,String u_nickname,
+			@RequestParam("u_head") MultipartFile u_head){
+		System.out.println(u_username + u_password +u_nickname);
+		System.out.println(u_head);
+		return "redirect:yer/toModify.action";
 	}
 	
 	public ProductService getProductsService() {
