@@ -3,13 +3,16 @@ package com.hqyj.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hqyj.bean.Stores;
 import com.hqyj.bean.User;
+import com.hqyj.service.StoreService;
 import com.hqyj.service.UserService;
 
 @Controller
@@ -18,6 +21,9 @@ public class SellerController {
 	
 	@Resource(name="UserService")
 	UserService userService;
+	
+	@Resource(name="StoreService")
+	StoreService storeService;
 	
 	public UserService getUserService() {
 		return userService;
@@ -50,9 +56,29 @@ public class SellerController {
 		
 		return "sellerHome";
 	}
-	@RequestMapping("/addStore")
-	public String AddStore(){
+	
+	@RequestMapping("/toAddStore")
+	public String toAddStore(){
 		
 		return "addStore";
+	}
+	
+	@RequestMapping("/addStore")
+	public String addStore(Stores store,HttpServletRequest request){
+		Cookie []cookies =request.getCookies();
+		String username="";
+		for(Cookie cookie:cookies){
+			if(cookie.getName().equals("LOGINNAME")){
+				username=cookie.getValue();
+			}
+		}
+		User user=userService.findUserByUsername(username);
+		store.setS_u_id(user.getU_id());
+		if(storeService.addStore(store)){
+			userService.updateHasStore(user.getU_id());
+		}
+		//storeService.addStore(store);
+		return "sellHome";
+		
 	}
 }

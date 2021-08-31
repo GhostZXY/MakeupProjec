@@ -16,9 +16,11 @@ public interface UserService {
 	
 	public boolean login(User user);
 	
-	public Object findUserByUsername(String loginName);
+	public User findUserByUsername(String loginName);
 	
 	public boolean modifyUserInfo(User user);
 	
 	public boolean modifyUserInfoWithHead(User user,MultipartFile head);
+	
+	public void updateHasStore(int id);
 }

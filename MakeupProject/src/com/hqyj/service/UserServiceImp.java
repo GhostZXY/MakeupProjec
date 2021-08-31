@@ -58,7 +58,7 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public Object findUserByUsername(String loginName) {
+	public User findUserByUsername(String loginName) {
 		// TODO Auto-generated method stub
 		return userDao.queryUserByUsername(loginName);
 	}
@@ -104,5 +104,11 @@ public class UserServiceImp implements UserService {
 			//userDao.updateUserWithPic(user);
 		}
 		return false;
+	}
+
+	@Override
+	public void updateHasStore(int id) {
+		// TODO Auto-generated method stub
+		userDao.updateUserHasStore(id);
 	}
 }

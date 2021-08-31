@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hqyj.dao.StoreDao">
+
+	<insert id="addStore" parameterType="store">
+		insert into store(s_name,s_u_id,s_address,s_tel) 
+		values (#{s_name},#{s_u_id},#{s_address},#{_tel})
+	</insert>
+	
+</mapper>
