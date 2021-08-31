@@ -33,6 +33,14 @@ public class SellerController {
 		this.userService = userService;
 	}
 	
+	public StoreService getStoreService() {
+		return storeService;
+	}
+
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
+	}
+
 	@RequestMapping("/toLogin")
 	public String toSellerLogin(){
 		return "sellerLogin";

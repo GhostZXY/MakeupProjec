@@ -2,9 +2,12 @@ package com.hqyj.service;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.hqyj.bean.Stores;
 import com.hqyj.dao.StoreDao;
 
+@Service(value="StoreService")
 public class StoreServiceImp implements StoreService{
 	
 	@Resource
