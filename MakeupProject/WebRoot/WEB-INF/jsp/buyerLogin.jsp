@@ -26,14 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var username = $("#u_username").val();
 				var password = $("#u_password").val();
 				$.ajax({
-					url:"product/login.action",
+					url:"buy/login.action",
 					data:{
 						"u_username":username,
 						"u_password":password
 					},
 					success:function(result){
 						if(result =="success"){
-							window.location.href="product/buyerhome.action"
+							window.location.href="buy/buyerhome.action"
 						}else{
 							$(".tip").html("登录失败")
 						}
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<input type="text" name="u_username" id="u_username"><br/>
    		<input type="text" name="u_password" id="u_password"><br/>
    		<input type="button" id="login_btn" value="登录"><br/>
-   		<a href="product/register.action">注册</a>
+   		<a href="buy/register.action">注册</a>
 			
    		<span class="tip"></span>
   </body>

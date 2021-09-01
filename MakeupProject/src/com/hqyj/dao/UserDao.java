@@ -20,5 +20,5 @@ public interface UserDao {
 	
 	public int updateUserWithPic(User user);
 	
-	public int updateUserHasStore(@Param("id")int id);
+	public int updateUserHasStore(@Param("id") int id);
 }

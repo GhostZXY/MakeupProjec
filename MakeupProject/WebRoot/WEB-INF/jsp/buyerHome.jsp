@@ -41,10 +41,10 @@ for(Cookie cookie:cookies){
 			<div id="top_nav">
 				<div id="nav_log_reg">
 				<% if (loginName.equals("")){ %>
-					<a href="product/toLogin.action" id="to_login">您好，请登录</a>
-					<a href="product/toRegister.action" id="to_register">免费注册</a>
+					<a href="buy/toLogin.action" id="to_login">您好，请登录</a>
+					<a href="buy/toRegister.action" id="to_register">免费注册</a>
 					<%}else{ %>
-						<p >您好，<a href="product/toModify.action?loginName=<%= loginName %> "><%= loginName %></a></p>
+						<p >您好，<a href="buy/toModify.action?loginName=<%= loginName %> "><%= loginName %></a></p>
 					<%} %>
 				</div>
 				<div class="nav_shopping_cart">

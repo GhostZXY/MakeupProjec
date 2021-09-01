@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="queryUserByUsername" parameterType="String" resultType="user">
-		select * from user where u_username = ${u_username}
+		select * from user where u_username = '${u_username}'
 	</select>
 	
 	<insert id="addUser" parameterType="user">
